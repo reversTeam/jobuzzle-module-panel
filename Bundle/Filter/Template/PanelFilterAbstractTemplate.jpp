@@ -1,0 +1,19 @@
+#import (Config.path +'/Kernel/Template/MasterTemplate') = MasterTemplate;
+
+class PanelFilterAbstractTemplate extends MasterTemplate {
+
+	_viewClassName = 'PanelFilterTemplateAbstractView';
+
+	_title = '';
+
+	initialize : function () {
+		_super();
+		this._content = [];
+	}
+
+	#default get, set for _title;
+	#default get, set for _content;
+
+}
+
+#export PanelFilterAbstractTemplate;

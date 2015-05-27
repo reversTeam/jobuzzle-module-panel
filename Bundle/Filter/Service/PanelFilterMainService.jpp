@@ -1,0 +1,9 @@
+#import (Config.path +'/Kernel/Service/MasterService') = MasterService;
+
+class PanelFilterMainService extends MasterService {
+
+
+
+}
+
+#export PanelFilterMainService;
