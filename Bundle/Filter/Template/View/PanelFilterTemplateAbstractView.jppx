@@ -24,6 +24,8 @@ class PanelFilterTemplateAbstractView extends MasterView {
 	disableAll : function () {
 		var content = this.state.content;
 
+		if (this.current < 0)
+			return ;
 		content[this.current].active = false;
 		this.current = -1;
 		this.setState({ content : content });
