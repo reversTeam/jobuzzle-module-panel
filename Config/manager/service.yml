@@ -1,0 +1,2 @@
+invokables :
+	panel_filter_main_service : Filter/Service/PanelFilterMainService

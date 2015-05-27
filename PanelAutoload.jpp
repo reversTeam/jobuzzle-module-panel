@@ -1,0 +1,16 @@
+#import (Config.path +'/Kernel/Autoload/MasterAutoload') = MasterAutoload;
+
+class PanelAutoload extends MasterAutoload {
+
+	confModuleName = 'Panel';
+
+	onBootstrap : function () {
+		var dispatcher = serviceLocator.get('Dispatcher');
+
+		dispatcher.trigger('Body:Left:add', { templateName : 'panel_filter_main_template' });
+		dispatcher.trigger('Body:Left:add', { templateName : 'panel_filter_action_template' });
+	}
+
+}
+
+#export PanelAutoload;

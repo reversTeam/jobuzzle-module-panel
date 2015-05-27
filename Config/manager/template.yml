@@ -1,0 +1,3 @@
+invokables:
+	panel_filter_main_template : Filter/Template/PanelFilterMainTemplate
+	panel_filter_action_template : Filter/Template/PanelFilterActionTemplate

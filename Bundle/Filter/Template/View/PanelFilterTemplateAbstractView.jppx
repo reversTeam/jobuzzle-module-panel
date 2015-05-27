@@ -1,0 +1,54 @@
+#import (Config.path +'/Kernel/Template/View/MasterView') = MasterView;
+
+class PanelFilterTemplateAbstractView extends MasterView {
+
+	current : -1;
+
+	initialState : function () {
+		return {
+			title : this._template.getTitle(),
+			content : this._template.getContent()
+		};
+	}
+
+	changeActive : function (key, e) {
+		var content = this.state.content;
+		if (this.current >= 0)
+			content[this.current].active = false;
+		this.link(e);
+		content[key].active = true;
+		this.current = key;
+		this.setState({ content : content });
+	}
+
+	disableAll : function () {
+		var content = this.state.content;
+
+		content[this.current].active = false;
+		this.current = -1;
+		this.setState({ content : content });
+	}
+
+	addPanel : function (elem) {
+		var content = this.state.content;
+
+		content.push(elem);
+		this.setState({ content : content });
+	}
+
+	render : function () {
+		var self = this;
+		return (<div className="panel">
+			<div className="title_panel" onClick={this.disableAll.bind(this)}>{this.state.title}</div>
+			<ul>
+				{this.state.content.map(function (elem, key) {
+					{var name = elem.active ? 'active' : '';}
+					return <li key={key} className={name} data-url={elem.src} data-template="example_book_main_template" onClick={self.changeActive.bind(self, key)}>{elem.name}</li>;
+				})}
+			</ul>
+		</div>);
+	}
+
+}
+
+#export PanelFilterTemplateAbstractView;

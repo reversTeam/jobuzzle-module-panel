@@ -1,0 +1,18 @@
+#import ('./PanelFilterAbstractTemplate') = PanelFilterAbstractTemplate;
+
+class PanelFilterMainTemplate extends PanelFilterAbstractTemplate {
+
+	_title = 'Filtres de recherche';
+
+	initialize : function () {
+		_super();
+		this._content = [
+			{ name : 'Webmaster', src : '/filtres/webmaster', active : false },
+			{ name : 'Sys Admin', src : '/filtres/sys-admin', active : false },
+			{ name : 'Devops', src : '/filtres/devops', active : false }
+		];
+	}
+
+}
+
+#export PanelFilterMainTemplate;
