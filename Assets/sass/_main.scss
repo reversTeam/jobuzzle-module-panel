@@ -12,6 +12,19 @@ div.panel {
 		border-top : 1px solid rgba($secondary_color, 0.2);
 		font-size : 20px;
 		height: 42px;
+
+		i {
+			line-height: 40px;
+			color : rgba($secondary_color, 0.4);
+			float : right;
+			margin-right: 15px;
+			text-shadow: 1px 1px 1px rgba(black, 0.1);
+
+			&:hover {
+				color : rgba($secondary_color, 0.8);
+				cursor: pointer;
+			}
+		}
 	}
 
 	ul {

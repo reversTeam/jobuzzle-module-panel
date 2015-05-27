@@ -2,6 +2,26 @@
 
 class PanelFilterTemplateMainView extends PanelFilterTemplateAbstractView {
 
+	addFilter : function (e) {
+		var dispatcher = serviceLocator.get('Dispatcher');
+
+		e.stopPropagation();
+		dispatcher.trigger('Body:Right:coverShow');
+	}
+
+	render : function () {
+		var self = this;
+		return (<div className="panel">
+			<div className="title_panel" onClick={this.disableAll.bind(this)}>{this.state.title} <i className="fa fa-plus-square" onClick={this.addFilter.bind(this)}></i></div>
+			<ul>
+				{this.state.content.map(function (elem, key) {
+					{var name = elem.active ? 'active' : '';}
+					return <li key={key} className={name} data-url={elem.src} data-template="example_book_main_template" onClick={self.changeActive.bind(self, key)}>{elem.name}</li>;
+				})}
+			</ul>
+		</div>);
+	}
+
 }
 
 #export PanelFilterTemplateMainView;

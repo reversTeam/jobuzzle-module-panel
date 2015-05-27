@@ -2,17 +2,17 @@
 
 class PanelFilterActionTemplate extends PanelFilterAbstractTemplate {
 
+	_viewClassName = 'PanelFilterTemplateActionView';
 	_title = 'Actions de liaisons';
 
 	initialize : function () {
 		_super();
 		this._content = [
-			{ name : 'Top', src : '/actions/top', active : false },
-			{ name : 'Favoris', src : '/actions/favoris', active : false },
-			{ name : 'Mes matchs', src : '/actions/mes-matchs', active : false },
-			{ name : 'Followers', src : '/actions/follower', active : false },
-			{ name : 'Eligibilité', src : '/actions/eligibilite', active : false },
-			{ name : 'Vue', src : '/actions/vue', active : false },
+			{ name : 'Top',			src : '/actions/top',			active : false },
+			{ name : 'Favoris',		src : '/actions/favoris',		active : false },
+			{ name : 'Mes matchs',	src : '/actions/mes-matchs',	active : false },
+			{ name : 'Eligibilité', src : '/actions/eligibilite',	active : false },
+			{ name : 'Vue',			src : '/actions/vue', 			active : false },
 		];
 	}
 
