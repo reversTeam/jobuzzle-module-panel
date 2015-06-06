@@ -44,7 +44,7 @@ div.panel {
 			transition: 0.1s;
 			font-size : 18px;
 			font-weight: 300;
-			color : rgba(white, 0.6);
+			color : rgba(white, 0.8);
 
 			&.active {
 				background-color: rgba($secondary_color, 0.1);
@@ -62,7 +62,7 @@ div.panel {
 
 			&:not(.active):hover {
 				background-color: rgba($secondary_color, 0.03);	
-				color : rgba(white, 0.8);
+				color : rgba(white, 0.9);
 			}
 		}
 	}
