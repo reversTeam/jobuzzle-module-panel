@@ -45,7 +45,7 @@ class PanelFilterTemplateAbstractView extends MasterView {
 			<ul>
 				{this.state.content.map(function (elem, key) {
 					{var name = elem.active ? 'active' : '';}
-					return <li key={key} className={name} data-url={elem.src} data-template="example_book_main_template" onClick={self.changeActive.bind(self, key)}>{elem.name}</li>;
+					return <li key={key} className={name} data-url={elem.src} onClick={self.changeActive.bind(self, key)}>{elem.name}</li>;
 				})}
 			</ul>
 		</div>);

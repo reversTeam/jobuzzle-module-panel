@@ -4,11 +4,18 @@ class PanelAutoload extends MasterAutoload {
 
 	confModuleName = 'Panel';
 
-	onBootstrap : function () {
-		
+	initialize : function () {
+		_super();
+		this.onListen();
 	}
 
-	init : function () {
+	onListen : function () {
+		var dispatcher = serviceLocator.get('Dispatcher');
+
+		dispatcher.listen('User:Me:Init', this, this.initPanelUser.bind(this));
+	}
+
+	initPanelUser : function () {
 		var dispatcher = serviceLocator.get('Dispatcher');
 
 		dispatcher.trigger('Body:Left:add', { templateName : 'panel_filter_main_template' });
