@@ -16,7 +16,7 @@ class PanelFilterTemplateAbstractView extends MasterView {
 		if (this.current >= 0)
 			content[this.current].active = false;
 		this.link(e);
-		content[key].active = true;
+		content[key].active = (key != this.current);
 		this.current = key;
 		this.setState({ content : content });
 	}
