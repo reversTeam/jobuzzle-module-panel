@@ -1,7 +1,3 @@
-#import ('./PanelFilterTemplateAbstractView') = PanelFilterTemplateAbstractView;
-
 class PanelFilterTemplateActionView extends PanelFilterTemplateAbstractView {
 
 }
-
-#export PanelFilterTemplateActionView;

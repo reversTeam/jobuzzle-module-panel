@@ -1,5 +1,3 @@
-#import ('./PanelFilterAbstractTemplate') = PanelFilterAbstractTemplate;
-
 class PanelFilterMainTemplate extends PanelFilterAbstractTemplate {
 
 	_viewClassName = 'PanelFilterTemplateMainView';
@@ -15,5 +13,3 @@ class PanelFilterMainTemplate extends PanelFilterAbstractTemplate {
 	}
 
 }
-
-#export PanelFilterMainTemplate;
