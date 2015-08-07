@@ -1,5 +1,3 @@
-#import ('./PanelFilterTemplateAbstractView') = PanelFilterTemplateAbstractView;
-
 class PanelFilterTemplateMainView extends PanelFilterTemplateAbstractView {
 
 	addFilter : function (e) {
@@ -23,5 +21,3 @@ class PanelFilterTemplateMainView extends PanelFilterTemplateAbstractView {
 	}
 
 }
-
-#export PanelFilterTemplateMainView;
