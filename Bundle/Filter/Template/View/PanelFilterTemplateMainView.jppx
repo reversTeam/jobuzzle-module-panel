@@ -7,7 +7,7 @@
 *       ## #     # #     # #     #    #       #    # #     #  *
 *       ## #     # #     # #     #   #       #     # ######   * @Last Modified by:   revers
 *  ####### #     # #     # #     #  #       #      # #        *
-*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-08-08 14:32:21
+*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-09-12 14:40:33
 **************************************************************/
 
 class PanelFilterTemplateMainView extends PanelFilterTemplateAbstractView {
@@ -19,7 +19,7 @@ class PanelFilterTemplateMainView extends PanelFilterTemplateAbstractView {
 		dispatcher.trigger('Body:Right:coverShow');
 	}
 
-	render : function () {
+	public render : function () {
 		var self = this;
 		return (<div className="panel">
 			<div className="title_panel" onClick={this.disableAll.bind(this)}>{this.state.title} <i className="fa fa-plus-square" onClick={this.addFilter.bind(this)}></i></div>
