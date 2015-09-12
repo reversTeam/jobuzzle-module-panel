@@ -7,7 +7,7 @@
 *       ## #     # #     # #     #    #       #    # #     #  *
 *       ## #     # #     # #     #   #       #     # ######   * @Last Modified by:   revers
 *  ####### #     # #     # #     #  #       #      # #        *
-*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-09-09 23:01:04
+*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-09-11 20:48:00
 **************************************************************/
 
 class PanelFilterActionTemplate extends PanelFilterAbstractTemplate {
@@ -17,13 +17,12 @@ class PanelFilterActionTemplate extends PanelFilterAbstractTemplate {
 
 	initialize : function () {
 		_super();
-		this._content = [
-			{ name : 'Top',			src : '/actions/top',			active : false },
-			{ name : 'Favoris',		src : '/actions/favoris',		active : false },
-			{ name : 'Mes matchs',	src : '/actions/mes-matchs',	active : false },
-			{ name : 'Eligibilité', src : '/actions/eligibilite',	active : false },
-			{ name : 'Vue',			src : '/actions/vue', 			active : false },
-		];
+		this._content = [];
+		this._content.push({ name : 'Top',			src : '/actions/top',			active : false });
+		this._content.push({ name : 'Favoris',		src : '/actions/favoris',		active : false });
+		this._content.push({ name : 'Mes matchs',	src : '/actions/mes-matchs',	active : false });
+		this._content.push({ name : 'Eligibilité', src : '/actions/eligibilite',	active : false });
+		this._content.push({ name : 'Vue',			src : '/actions/vue', 			active : false });
 	}
 
 }

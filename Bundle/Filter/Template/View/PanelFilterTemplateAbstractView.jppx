@@ -7,28 +7,29 @@
 *       ## #     # #     # #     #    #       #    # #     #  *
 *       ## #     # #     # #     #   #       #     # ######   * @Last Modified by:   revers
 *  ####### #     # #     # #     #  #       #      # #        *
-*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-08-08 14:32:21
+*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-09-12 14:42:36
 **************************************************************/
 
 class PanelFilterTemplateAbstractView extends MasterView {
 
 	current : -1;
 
-	initialState : function () {
+	public initialState : function () {
 		return {
-			title : this._template.getTitle(),
-			content : this._template.getContent()
+			title : this['_template'].getTitle(),
+			content : this['_template'].getContent()
 		};
 	}
 
 	changeActive : function (key, e) {
+		console.log('ON CHANGE ACTIVE');
 		var content = this.state.content;
 		if (this.current >= 0)
 			content[this.current].active = false;
 		this.link(e);
 		content[key].active = (key != this.current);
 		this.current = key;
-		this.setState({ content : content });
+		this['setState']({ 'content' : content });
 	}
 
 	disableAll : function () {
@@ -38,17 +39,17 @@ class PanelFilterTemplateAbstractView extends MasterView {
 			return ;
 		content[this.current].active = false;
 		this.current = -1;
-		this.setState({ content : content });
+		this['setState']({ 'content' : content });
 	}
 
 	addPanel : function (elem) {
 		var content = this.state.content;
 
 		content.push(elem);
-		this.setState({ content : content });
+		this['setState']({ 'content' : content });
 	}
 
-	render : function () {
+	public render : function () {
 		var self = this;
 		return (<div className="panel">
 			<div className="title_panel" onClick={this.disableAll.bind(this)}>{this.state.title}</div>
