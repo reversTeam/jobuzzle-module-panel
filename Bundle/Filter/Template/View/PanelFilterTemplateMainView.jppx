@@ -7,7 +7,7 @@
 *       ## #     # #     # #     #    #       #    # #     #  *
 *       ## #     # #     # #     #   #       #     # ######   * @Last Modified by:   revers
 *  ####### #     # #     # #     #  #       #      # #        *
-*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-09-12 14:40:33
+*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-09-20 19:19:03
 **************************************************************/
 
 class PanelFilterTemplateMainView extends PanelFilterTemplateAbstractView {
@@ -22,9 +22,9 @@ class PanelFilterTemplateMainView extends PanelFilterTemplateAbstractView {
 	public render : function () {
 		var self = this;
 		return (<div className="panel">
-			<div className="title_panel" onClick={this.disableAll.bind(this)}>{this.state.title} <i className="fa fa-plus-square" onClick={this.addFilter.bind(this)}></i></div>
+			<div className="title_panel" onClick={this.disableAll.bind(this)}>{this.state['title']} <i className="fa fa-plus-square" onClick={this.addFilter.bind(this)}></i></div>
 			<ul>
-				{this.state.content.map(function (elem, key) {
+				{this.state['content'].map(function (elem, key) {
 					{var name = elem.active ? 'active' : '';}
 					return <li key={key} className={name} data-url={elem.src} data-template="example_book_main_template" onClick={self.changeActive.bind(self, key)}>{elem.name}</li>;
 				})}
