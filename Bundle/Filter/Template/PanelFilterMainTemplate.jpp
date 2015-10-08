@@ -7,13 +7,14 @@
 *       ## #     # #     # #     #    #       #    # #     #  *
 *       ## #     # #     # #     #   #       #     # ######   * @Last Modified by:   revers
 *  ####### #     # #     # #     #  #       #      # #        *
-*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-08-08 14:32:21
+*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-10-06 23:02:38
 **************************************************************/
 
 class PanelFilterMainTemplate extends PanelFilterAbstractTemplate {
 
 	_viewClassName = 'PanelFilterTemplateMainView';
 	_title = 'Filtres de recherche';
+	_urlLink = '/filter';
 
 	initialize : function () {
 		_super();

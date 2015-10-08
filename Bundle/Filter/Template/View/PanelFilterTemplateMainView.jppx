@@ -7,7 +7,7 @@
 *       ## #     # #     # #     #    #       #    # #     #  *
 *       ## #     # #     # #     #   #       #     # ######   * @Last Modified by:   revers
 *  ####### #     # #     # #     #  #       #      # #        *
-*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-09-20 19:19:03
+*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-10-06 23:04:43
 **************************************************************/
 
 class PanelFilterTemplateMainView extends PanelFilterTemplateAbstractView {
@@ -21,8 +21,10 @@ class PanelFilterTemplateMainView extends PanelFilterTemplateAbstractView {
 
 	public render : function () {
 		var self = this;
+		var router = serviceLocator.get('Router');
+
 		return (<div className="panel">
-			<div className="title_panel" onClick={this.disableAll.bind(this)}>{this.state['title']} <i className="fa fa-plus-square" onClick={this.addFilter.bind(this)}></i></div>
+			<div className="title_panel" data-url={router.build(this.state.link)} onClick={this.disableAll.bind(this)}>{this.state['title']} <i className="fa fa-plus-square" onClick={this.addFilter.bind(this)}></i></div>
 			<ul>
 				{this.state['content'].map(function (elem, key) {
 					{var name = elem.active ? 'active' : '';}
