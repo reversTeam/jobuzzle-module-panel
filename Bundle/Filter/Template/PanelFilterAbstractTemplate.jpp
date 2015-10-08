@@ -7,7 +7,7 @@
 *       ## #     # #     # #     #    #       #    # #     #  *
 *       ## #     # #     # #     #   #       #     # ######   * @Last Modified by:   revers
 *  ####### #     # #     # #     #  #       #      # #        *
-*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-08-08 14:32:21
+*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-10-06 22:35:11
 **************************************************************/
 
 class PanelFilterAbstractTemplate extends MasterTemplate {
@@ -15,6 +15,7 @@ class PanelFilterAbstractTemplate extends MasterTemplate {
 	_viewClassName = 'PanelFilterTemplateAbstractView';
 
 	_title = '';
+	_urlLink = '';
 
 	initialize : function () {
 		_super();
@@ -23,5 +24,6 @@ class PanelFilterAbstractTemplate extends MasterTemplate {
 
 	#default get, set for _title;
 	#default get, set for _content;
+	#default get, set for _urlLink;
 
 }

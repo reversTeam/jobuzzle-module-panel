@@ -7,7 +7,7 @@
 *       ## #     # #     # #     #    #       #    # #     #  *
 *       ## #     # #     # #     #   #       #     # ######   * @Last Modified by:   revers
 *  ####### #     # #     # #     #  #       #      # #        *
-*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-10-01 19:09:50
+*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-10-07 10:27:50
 **************************************************************/
 
 class PanelFilterTemplateAbstractView extends MasterView {
@@ -17,7 +17,8 @@ class PanelFilterTemplateAbstractView extends MasterView {
 	public initialState : function () {
 		return {
 			title : this['_template'].getTitle(),
-			content : this['_template'].getContent()
+			content : this['_template'].getContent(),
+			link : this['_template'].getUrlLink()
 		};
 	}
 
@@ -31,14 +32,17 @@ class PanelFilterTemplateAbstractView extends MasterView {
 		this['setState']({ 'content' : content });
 	}
 
-	disableAll : function () {
+	disableAll : function (e) {
 		var content = this.state.content;
 
-		if (this.current < 0)
+		if (this.current < 0) {
+			this.link(e);
 			return ;
+		}
 		content[this.current].active = false;
 		this.current = -1;
 		this['setState']({ 'content' : content });
+		this.link(e);
 	}
 
 	addPanel : function (elem) {
@@ -50,8 +54,10 @@ class PanelFilterTemplateAbstractView extends MasterView {
 
 	public render : function () {
 		var self = this;
+		var router = serviceLocator.get('Router');
+
 		return (<div className="panel">
-			<div className="title_panel" onClick={this.disableAll.bind(this)}>{this.state.title}</div>
+			<div className="title_panel" data-url={router.build(this.state.link)} onClick={this.disableAll.bind(this)}>{this.state.title}</div>
 			<ul>
 				{this.state.content.map(function (elem, key) {
 					{var name = elem.active ? 'active' : '';}
