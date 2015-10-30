@@ -7,7 +7,7 @@
 *       ## #     # #     # #     #    #       #    # #     #  *
 *       ## #     # #     # #     #   #       #     # ######   * @Last Modified by:   revers
 *  ####### #     # #     # #     #  #       #      # #        *
-*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-10-29 13:47:54
+*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-10-30 12:04:42
 **************************************************************/
 
 div.panel {
@@ -17,11 +17,11 @@ div.panel {
 
 	div.title_panel {
 		padding-left : 20px;
-		background-color: darken($secondary_color, 25);
+		background-color: darken($secondary_color, 5);
 		cursor: pointer;
 		font-style: italic;
 		color : $white_color;
-		border-top : 1px solid darken($secondary_color, 23);
+		border-top : 1px solid darken($secondary_color, 3);
 		font-size : 20px;
 		height: 42px;
 
