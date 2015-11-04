@@ -7,7 +7,7 @@
 *       ## #     # #     # #     #    #       #    # #     #  *
 *       ## #     # #     # #     #   #       #     # ######   * @Last Modified by:   revers
 *  ####### #     # #     # #     #  #       #      # #        *
-*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-10-06 23:02:53
+*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-11-03 16:58:02
 **************************************************************/
 
 class PanelFilterActionTemplate extends PanelFilterAbstractTemplate {
@@ -18,6 +18,8 @@ class PanelFilterActionTemplate extends PanelFilterAbstractTemplate {
 
 	initialize : function () {
 		_super();
+		var store = serviceLocator.get('ServiceManager').get('store_manager_main_service');
+
 		this._content = [];
 		this._content.push({ name : 'Top',			src : '/actions/top',			active : false });
 		this._content.push({ name : 'Favoris',		src : '/actions/favoris',		active : false });

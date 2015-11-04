@@ -7,22 +7,41 @@
 *       ## #     # #     # #     #    #       #    # #     #  *
 *       ## #     # #     # #     #   #       #     # ######   * @Last Modified by:   revers
 *  ####### #     # #     # #     #  #       #      # #        *
-*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-10-06 23:02:38
+*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-11-04 21:20:39
 **************************************************************/
 
 class PanelFilterMainTemplate extends PanelFilterAbstractTemplate {
 
 	_viewClassName = 'PanelFilterTemplateMainView';
-	_title = 'Filtres de recherche';
+	_title = 'panel.main.title';
 	_urlLink = '/filter';
 
 	initialize : function () {
 		_super();
-		this._content = [
-			{ name : 'Webmaster',	src : '/filtres/webmaster',	active : false },
-			{ name : 'Sys Admin',	src : '/filtres/sys-admin',	active : false },
-			{ name : 'Devops',		src : '/filtres/devops',	active : false }
-		];
+		var store = serviceLocator.get('ServiceManager').get('store_manager_main_service');
+
+		if (store.getMe().getType() != 'Student')
+			this._content = this.getPanelCompany();
+		else
+			this._content = this.getPanelStudent();
+	}
+
+	getPanelStudent : function () {
+		var content = [];
+		this._urlLink = '/companyfilter';
+
+		content.push({ name : 'panel.main.sub.companies',	src : '/company', active : false });
+		
+		return content;
+	}
+
+	getPanelCompany : function () {
+		var content = [];
+		this._urlLink = '/studentfilter';
+		
+		content.push({ name : 'panel.main.sub.students',	src : '/student', active : false });
+
+		return content;
 	}
 
 }

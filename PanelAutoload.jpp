@@ -7,7 +7,7 @@
 *       ## #     # #     # #     #    #       #    # #     #  *
 *       ## #     # #     # #     #   #       #     # ######   * @Last Modified by:   revers
 *  ####### #     # #     # #     #  #       #      # #        *
-*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-09-11 21:47:37
+*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-11-03 17:08:25
 **************************************************************/
 
 class PanelAutoload extends MasterAutoload {
@@ -29,7 +29,7 @@ class PanelAutoload extends MasterAutoload {
 		var dispatcher = serviceLocator.get('Dispatcher');
 
 		dispatcher.trigger('Body:Left:add', { templateName : 'panel_filter_main_template' });
-		dispatcher.trigger('Body:Left:add', { templateName : 'panel_filter_action_template' });
+		// dispatcher.trigger('Body:Left:add', { templateName : 'panel_filter_action_template' });
 	}
 
 }
