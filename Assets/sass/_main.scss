@@ -7,7 +7,7 @@
 *       ## #     # #     # #     #    #       #    # #     #  *
 *       ## #     # #     # #     #   #       #     # ######   * @Last Modified by:   revers
 *  ####### #     # #     # #     #  #       #      # #        *
-*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-10-30 12:04:42
+*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-11-03 17:10:06
 **************************************************************/
 
 div.panel {
@@ -66,7 +66,7 @@ div.panel {
 					content: '';
 					height: 50px;
 					width: 3px;
-					background-color: darken($neutral_color, 5);
+					background-color: darken($secondary_color, 5);
 					position: absolute;
 					right: 0px;
 				}
