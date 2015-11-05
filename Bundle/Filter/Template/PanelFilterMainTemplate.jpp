@@ -7,7 +7,7 @@
 *       ## #     # #     # #     #    #       #    # #     #  *
 *       ## #     # #     # #     #   #       #     # ######   * @Last Modified by:   revers
 *  ####### #     # #     # #     #  #       #      # #        *
-*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-11-04 21:20:39
+*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-11-05 14:46:11
 **************************************************************/
 
 class PanelFilterMainTemplate extends PanelFilterAbstractTemplate {
@@ -20,10 +20,29 @@ class PanelFilterMainTemplate extends PanelFilterAbstractTemplate {
 		_super();
 		var store = serviceLocator.get('ServiceManager').get('store_manager_main_service');
 
-		if (store.getMe().getType() != 'Student')
-			this._content = this.getPanelCompany();
-		else
-			this._content = this.getPanelStudent();
+		// if (store.getMe().getType() != 'Student')
+		// 	this._content = this.getPanelCompany();
+		// else
+		// 	this._content = this.getPanelStudent();
+
+		this._content = this.getPanel();
+	}
+
+	getPanel : function () {
+		var content = [];
+		var router = serviceLocator.get('Router');
+		var routes = router.getRoutes();
+		this._urlLink = '/';
+
+		for (var i in routes) {
+			content.push({
+				name	: 'panel.main.sub.'+ routes[i].getName(),
+				src		: '/'+ routes[i].getName(),
+				active	: false 
+			});
+		}
+
+		return content;
 	}
 
 	getPanelStudent : function () {

@@ -7,11 +7,26 @@
 #       ## #     # #     # #     #    #       #    # #     #  #
 #       ## #     # #     # #     #   #       #     # ######   # @Last Modified by:   revers
 #  ####### #     # #     # #     #  #       #      # #        #
-#  ######   #####   ######  #####  ####### ####### # #######  # @Last Modified time: 2015-11-04 14:51:29
+#  ######   #####   ######  #####  ####### ####### # #######  # @Last Modified time: 2015-11-05 15:01:44
 ###############################################################
 
 main:
 	title: Search filters
 	sub:
-		students: Students
-		companies: Companies
+		element : Elements
+		data: Data
+		student: Students
+		company: Companies
+		school: Schools
+		filter: Filters
+		skill: Skills
+		link: Link
+		skilllink: Skills link
+		baseusercompany : Professional users
+		agent: Agents
+		recruiter: Recruiters
+		studentfilter: Student filter
+		companyfilter: Company filter
+		challenge: Challenge
+		challengelink: Challenge Link
+		eligibility: Eligibility
