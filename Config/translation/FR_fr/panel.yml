@@ -7,11 +7,28 @@
 #       ## #     # #     # #     #    #       #    # #     #  #
 #       ## #     # #     # #     #   #       #     # ######   # @Last Modified by:   revers
 #  ####### #     # #     # #     #  #       #      # #        #
-#  ######   #####   ######  #####  ####### ####### # #######  # @Last Modified time: 2015-11-04 14:51:26
+#  ######   #####   ######  #####  ####### ####### # #######  # @Last Modified time: 2015-11-05 14:54:34
 ###############################################################
 
 main:
 	title: Filtres de recherche
 	sub:
-		students: Étudiants
-		companies: Entreprises
+		element : Élements
+		data: Data
+		student: Étudiants
+		company: Entreprises
+		book : Livres
+		author: Auteurs
+		school: Écoles
+		filter: Filtres
+		skill: Compétences
+		link: Liens
+		skilllink: Liens de compétences
+		baseusercompany : Utilisateurs pro
+		agent: Représentant
+		recruiter: Recruteurs
+		studentfilter: Filtres étudiants
+		companyfilter: Filtres entreprises
+		challenge: Défis
+		challengelink: Liens de défis
+		eligibility: Éligibilitées
