@@ -7,14 +7,14 @@
 *       ## #     # #     # #     #    #       #    # #     #  *
 *       ## #     # #     # #     #   #       #     # ######   * @Last Modified by:   revers
 *  ####### #     # #     # #     #  #       #      # #        *
-*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-11-05 14:46:11
+*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-11-05 17:58:06
 **************************************************************/
 
 class PanelFilterMainTemplate extends PanelFilterAbstractTemplate {
 
 	_viewClassName = 'PanelFilterTemplateMainView';
 	_title = 'panel.main.title';
-	_urlLink = '/filter';
+	_urlLink = '/';
 
 	initialize : function () {
 		_super();
@@ -25,24 +25,50 @@ class PanelFilterMainTemplate extends PanelFilterAbstractTemplate {
 		// else
 		// 	this._content = this.getPanelStudent();
 
-		this._content = this.getPanel();
+		this.getPanel(serviceLocator.get('Router'));
 	}
 
-	getPanel : function () {
-		var content = [];
+	getPanel : function (current) {
 		var router = serviceLocator.get('Router');
-		var routes = router.getRoutes();
-		this._urlLink = '/';
+		var t = serviceLocator.get('Translator');
+		var content = [];
+		var link = this._urlLink;
+		var title = this._title;
+		current = current ? current : router;
+		var routes = current.getRoutes();
 
-		for (var i in routes) {
-			content.push({
-				name	: 'panel.main.sub.'+ routes[i].getName(),
-				src		: '/'+ routes[i].getName(),
-				active	: false 
-			});
+
+		if (!(current instanceof Router)) {
+			if (current.getParent() instanceof MasterRoute) {
+				this.getPanel(router);
+				return ;
+			}
+			title = 'panel.main.sub.'+ current.getParent().getName();
+			link = '../';
 		}
 
-		return content;
+		for (var i in routes) {
+			if (!(routes[i] instanceof ParamsRouteType)) {
+				if ((current instanceof Router))
+					var route = router.build('/'+ routes[i].getName());
+				else
+					var route = router.buildPartial(routes[i].getName());
+
+				content.push({
+					name	: t.translate('panel.main.sub.'+ routes[i].getName()),
+					src		: route,
+					active	: (route == router.getCurrentSegment())
+				});
+			}
+		}
+
+		if (this._view) {
+			this._view.setState({
+				title: t.translate(title),
+				content : content,
+				link : router.buildPartial(link)
+			});
+		}
 	}
 
 	getPanelStudent : function () {
@@ -51,7 +77,8 @@ class PanelFilterMainTemplate extends PanelFilterAbstractTemplate {
 
 		content.push({ name : 'panel.main.sub.companies',	src : '/company', active : false });
 		
-		return content;
+		if (this._view)
+			this._view.setContent(content);
 	}
 
 	getPanelCompany : function () {
@@ -60,7 +87,8 @@ class PanelFilterMainTemplate extends PanelFilterAbstractTemplate {
 		
 		content.push({ name : 'panel.main.sub.students',	src : '/student', active : false });
 
-		return content;
+		if (this._view)
+			this._view.setContent(content);
 	}
 
 }
