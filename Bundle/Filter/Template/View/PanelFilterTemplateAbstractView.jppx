@@ -7,7 +7,7 @@
 *       ## #     # #     # #     #    #       #    # #     #  *
 *       ## #     # #     # #     #   #       #     # ######   * @Last Modified by:   revers
 *  ####### #     # #     # #     #  #       #      # #        *
-*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-11-03 17:03:32
+*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-11-05 16:44:56
 **************************************************************/
 
 class PanelFilterTemplateAbstractView extends MasterView {
@@ -16,15 +16,15 @@ class PanelFilterTemplateAbstractView extends MasterView {
 
 	public initialState : function () {
 		return {
-			title : this['_template'].getTitle(),
-			content : this['_template'].getContent(),
-			link : this['_template'].getUrlLink()
+			title : '',
+			content : [],
+			link : '/'
 		};
 	}
 
 	changeActive : function (key, e) {
 		var content = this.state.content;
-		if (this.current >= 0)
+		if (this.current >= 0 && content[this.current] && content[this.current].active)
 			content[this.current].active = false;
 		this.link(e);
 		content[key].active = (key != this.current);
@@ -39,7 +39,8 @@ class PanelFilterTemplateAbstractView extends MasterView {
 			this.link(e);
 			return ;
 		}
-		content[this.current].active = false;
+		if (content[this.current] && content[this.current].active)
+			content[this.current].active = false;
 		this.current = -1;
 		this['setState']({ 'content' : content });
 		this.link(e);
@@ -49,6 +50,7 @@ class PanelFilterTemplateAbstractView extends MasterView {
 		var content = this.state.content;
 
 		content.push(elem);
+		this.disableAll();
 		this['setState']({ 'content' : content });
 	}
 
@@ -61,7 +63,7 @@ class PanelFilterTemplateAbstractView extends MasterView {
 			<ul>
 				{this.state.content.map(function (elem, key) {
 					{var name = elem.active ? 'active' : '';}
-					return <li key={key} className={name} data-url={router.build(elem.src)} onClick={self.changeActive.bind(self, key)}>{elem.name}</li>;
+					return <li key={key} className={name} data-url={router.buildPartial(elem.src)} onClick={self.changeActive.bind(self, key)}>{elem.name}</li>;
 				})}
 			</ul>
 		</div>);

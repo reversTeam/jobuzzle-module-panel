@@ -7,7 +7,7 @@
 *       ## #     # #     # #     #    #       #    # #     #  *
 *       ## #     # #     # #     #   #       #     # ######   * @Last Modified by:   revers
 *  ####### #     # #     # #     #  #       #      # #        *
-*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-11-04 14:51:59
+*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-11-05 17:19:29
 **************************************************************/
 
 class PanelFilterTemplateMainView extends PanelFilterTemplateAbstractView {
@@ -19,14 +19,14 @@ class PanelFilterTemplateMainView extends PanelFilterTemplateAbstractView {
 		var t = serviceLocator.get('Translator');
 
 		return (<div className="panel">
-			<div className="title_panel" data-url={router.build(this.state.link)} onClick={this.disableAll.bind(this)}>
-				{t.translate(this.state['title'])}
+			<div className="title_panel" data-url={this.state.link} onClick={this.disableAll.bind(this)}>
+				{this.state['title']}
 				<i className="fa fa-plus-square" onClick={this.link} data-url={routeAddFilter}></i>
 			</div>
 			<ul>
 				{this.state['content'].map(function (elem, key) {
 					{var name = elem.active ? 'active' : '';}
-					return <li key={key} className={name} data-url={router.build(elem.src)} data-template="example_book_main_template" onClick={self.changeActive.bind(self, key)}>{t.translate(elem.name)}</li>;
+					return <li key={key} className={name} data-url={elem.src} onClick={self.changeActive.bind(self, key)}>{elem.name}</li>;
 				})}
 			</ul>
 		</div>);

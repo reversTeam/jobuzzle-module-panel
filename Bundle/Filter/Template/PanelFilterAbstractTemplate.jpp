@@ -7,7 +7,7 @@
 *       ## #     # #     # #     #    #       #    # #     #  *
 *       ## #     # #     # #     #   #       #     # ######   * @Last Modified by:   revers
 *  ####### #     # #     # #     #  #       #      # #        *
-*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-10-06 22:35:11
+*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-11-05 16:27:10
 **************************************************************/
 
 class PanelFilterAbstractTemplate extends MasterTemplate {
@@ -20,6 +20,30 @@ class PanelFilterAbstractTemplate extends MasterTemplate {
 	initialize : function () {
 		_super();
 		this._content = [];
+	}
+
+	onListen : function () {
+		var dispatcher = _super();
+
+		dispatcher.listen('Body:Content:changed', this, this.checkPanelActive.bind(this));
+		dispatcher.listen('Error:url:404', this, this.resetPanelActive.bind(this));
+
+		return dispatcher;
+	}
+
+	checkPanelActive : function () {
+		var router = serviceLocator.get('Router');
+
+		this.getPanel(router.getCurrentRoute());
+	}
+
+	resetPanelActive : function () {
+		var router = serviceLocator.get('Router');
+
+		var self = this;
+		setTimeout(function() {
+			self.getPanel(router);
+		}, 0);
 	}
 
 	#default get, set for _title;
