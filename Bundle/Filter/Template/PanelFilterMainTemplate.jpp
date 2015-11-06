@@ -7,7 +7,7 @@
 *       ## #     # #     # #     #    #       #    # #     #  *
 *       ## #     # #     # #     #   #       #     # ######   * @Last Modified by:   revers
 *  ####### #     # #     # #     #  #       #      # #        *
-*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-11-05 17:58:06
+*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-11-06 14:31:55
 **************************************************************/
 
 class PanelFilterMainTemplate extends PanelFilterAbstractTemplate {
@@ -28,22 +28,30 @@ class PanelFilterMainTemplate extends PanelFilterAbstractTemplate {
 		this.getPanel(serviceLocator.get('Router'));
 	}
 
-	getPanel : function (current) {
+	getPanel : function (current, byParent) {
 		var router = serviceLocator.get('Router');
 		var t = serviceLocator.get('Translator');
 		var content = [];
 		var link = this._urlLink;
-		var title = this._title;
+		var title = t.translate(this._title);
 		current = current ? current : router;
 		var routes = current.getRoutes();
+		var prefix = byParent ? '../' : '';
 
+		// if (router.getLastSegmentName() == 'view')
+		// 	return ;
 
 		if (!(current instanceof Router)) {
+			var lastSegmentName = router.getLastSegmentName();
+			var parentName = current.getParent().getName();
 			if (current.getParent() instanceof MasterRoute) {
 				this.getPanel(router);
 				return ;
 			}
-			title = 'panel.main.sub.'+ current.getParent().getName();
+			if (parentName == 'view')
+				return ;
+
+			title = t.translate('panel.main.sub.'+ parentName);
 			link = '../';
 		}
 
@@ -52,19 +60,21 @@ class PanelFilterMainTemplate extends PanelFilterAbstractTemplate {
 				if ((current instanceof Router))
 					var route = router.build('/'+ routes[i].getName());
 				else
-					var route = router.buildPartial(routes[i].getName());
+					var route = router.buildPartial(prefix + routes[i].getName());
 
-				content.push({
-					name	: t.translate('panel.main.sub.'+ routes[i].getName()),
-					src		: route,
-					active	: (route == router.getCurrentSegment())
-				});
+				if (routes[i].getName() != 'create' && routes[i].getName() != 'update' && routes[i].getName() != 'delete' && routes[i].getName() != 'view') {
+	 				content.push({
+						name	: t.translate('panel.main.sub.'+ routes[i].getName()),
+						src		: route,
+						active	: (route == router.getCurrentSegment())
+					});
+				}
 			}
 		}
 
 		if (this._view) {
 			this._view.setState({
-				title: t.translate(title),
+				title: title,
 				content : content,
 				link : router.buildPartial(link)
 			});

@@ -7,7 +7,7 @@
 *       ## #     # #     # #     #    #       #    # #     #  *
 *       ## #     # #     # #     #   #       #     # ######   * @Last Modified by:   revers
 *  ####### #     # #     # #     #  #       #      # #        *
-*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-11-05 19:02:09
+*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-11-06 12:49:17
 **************************************************************/
 
 class PanelFilterTemplateMainView extends PanelFilterTemplateAbstractView {
@@ -17,10 +17,18 @@ class PanelFilterTemplateMainView extends PanelFilterTemplateAbstractView {
 		var router = serviceLocator.get('Router');
 		var routeAddFilter = router.buildPartial('create');
 		var t = serviceLocator.get('Translator');
+		var title = '';
+
+		if (this.state['title'] instanceof MasterEntity) {
+			title = this.state['title'].getName();
+		} else {
+			title = this.state['title'];
+		}
+
 
 		return (<div className="panel">
 			<div className="title_panel" data-url={this.state.link} onClick={this.disableAll.bind(this)}>
-				{this.state['title']}
+				{title}
 				<i className="fa fa-plus-square" onClick={this.link} data-url={routeAddFilter}></i>
 			</div>
 			<ul>

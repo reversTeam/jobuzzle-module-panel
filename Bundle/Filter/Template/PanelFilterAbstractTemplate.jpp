@@ -7,7 +7,7 @@
 *       ## #     # #     # #     #    #       #    # #     #  *
 *       ## #     # #     # #     #   #       #     # ######   * @Last Modified by:   revers
 *  ####### #     # #     # #     #  #       #      # #        *
-*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-11-05 16:27:10
+*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-11-06 13:07:15
 **************************************************************/
 
 class PanelFilterAbstractTemplate extends MasterTemplate {
@@ -27,8 +27,22 @@ class PanelFilterAbstractTemplate extends MasterTemplate {
 
 		dispatcher.listen('Body:Content:changed', this, this.checkPanelActive.bind(this));
 		dispatcher.listen('Error:url:404', this, this.resetPanelActive.bind(this));
+		dispatcher.listen('Router:setParentEntity:*', this, this.changeParentType.bind(this));
 
 		return dispatcher;
+	}
+
+	changeParentType : function () {
+		var router = serviceLocator.get('Router');
+		var parentEntity = router.getParentEntity();
+		var segmentName = router.getLastSegmentName();
+
+		if (segmentName != 'view' && segmentName != 'create' && parentEntity && this._view) {
+			this.getPanel(router.getCurrentRoute().getParent(), true);
+			this._view.setState({
+				title : parentEntity
+			});
+		}
 	}
 
 	checkPanelActive : function () {
