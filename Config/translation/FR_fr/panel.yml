@@ -7,7 +7,7 @@
 #       ## #     # #     # #     #    #       #    # #     #  #
 #       ## #     # #     # #     #   #       #     # ######   # @Last Modified by:   revers
 #  ####### #     # #     # #     #  #       #      # #        #
-#  ######   #####   ######  #####  ####### ####### # #######  # @Last Modified time: 2015-11-05 17:15:16
+#  ######   #####   ######  #####  ####### ####### # #######  # @Last Modified time: 2015-11-05 23:05:40
 ###############################################################
 
 main:
@@ -17,8 +17,6 @@ main:
 		data: Data
 		student: Étudiants
 		company: Entreprises
-		book : Livres
-		author: Auteurs
 		school: Écoles
 		filter: Filtres
 		skill: Compétences
@@ -32,6 +30,8 @@ main:
 		challenge: Défis
 		challengelink: Liens de défis
 		eligibility: Éligibilitées
+		institute: Établissements
+
 		delete: Supprimer
 		update : Éditer
 		create: Créer
