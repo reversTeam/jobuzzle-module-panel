@@ -7,10 +7,19 @@
 *       ## #     # #     # #     #    #       #    # #     #  *
 *       ## #     # #     # #     #   #       #     # ######   * @Last Modified by:   revers
 *  ####### #     # #     # #     #  #       #      # #        *
-*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-11-06 12:49:17
+*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-11-06 16:16:46
 **************************************************************/
 
 class PanelFilterTemplateMainView extends PanelFilterTemplateAbstractView {
+
+	public getPreviousTitlePanel : function (obj) {
+		if (this.state['title'] instanceof MasterEntity && typeof this.state['title'].displayMiniature == 'function') {
+			return <div className="previousTitlePanel">
+				{this.state['title'].displayMiniature()}
+			</div>;
+		}
+		return null;
+	}
 
 	public render : function () {
 		var self = this;
@@ -18,6 +27,7 @@ class PanelFilterTemplateMainView extends PanelFilterTemplateAbstractView {
 		var routeAddFilter = router.buildPartial('create');
 		var t = serviceLocator.get('Translator');
 		var title = '';
+		var current = router.getCurrentRoute();
 
 		if (this.state['title'] instanceof MasterEntity) {
 			title = this.state['title'].getName();
@@ -25,11 +35,11 @@ class PanelFilterTemplateMainView extends PanelFilterTemplateAbstractView {
 			title = this.state['title'];
 		}
 
-
 		return (<div className="panel">
 			<div className="title_panel" data-url={this.state.link} onClick={this.disableAll.bind(this)}>
-				{title}
-				<i className="fa fa-plus-square" onClick={this.link} data-url={routeAddFilter}></i>
+				{this.getPreviousTitlePanel(this.state['title'])}
+				<span className="title">{title}</span>
+				{!(current && current.getParent() instanceof MasterRoute) ? <i className="fa fa-chevron-left back"></i> : null }
 			</div>
 			<ul>
 				{this.state['content'].map(function (elem, key) {
