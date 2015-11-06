@@ -7,7 +7,7 @@
 #       ## #     # #     # #     #    #       #    # #     #  #
 #       ## #     # #     # #     #   #       #     # ######   # @Last Modified by:   revers
 #  ####### #     # #     # #     #  #       #      # #        #
-#  ######   #####   ######  #####  ####### ####### # #######  # @Last Modified time: 2015-11-05 17:15:21
+#  ######   #####   ######  #####  ####### ####### # #######  # @Last Modified time: 2015-11-05 18:59:29
 ###############################################################
 
 main:
@@ -30,3 +30,9 @@ main:
 		challenge: Challenge
 		challengelink: Challenge Link
 		eligibility: Eligibility
+		institute: Institutes
+
+		delete: Delete
+		update : Edit
+		create: Create
+		view: View

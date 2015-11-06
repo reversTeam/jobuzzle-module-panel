@@ -7,7 +7,7 @@
 *       ## #     # #     # #     #    #       #    # #     #  *
 *       ## #     # #     # #     #   #       #     # ######   * @Last Modified by:   revers
 *  ####### #     # #     # #     #  #       #      # #        *
-*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-11-05 17:19:29
+*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-11-05 19:02:09
 **************************************************************/
 
 class PanelFilterTemplateMainView extends PanelFilterTemplateAbstractView {
@@ -15,7 +15,7 @@ class PanelFilterTemplateMainView extends PanelFilterTemplateAbstractView {
 	public render : function () {
 		var self = this;
 		var router = serviceLocator.get('Router');
-		var routeAddFilter = router.build(this._template.getUrlLink() +'/create');
+		var routeAddFilter = router.buildPartial('create');
 		var t = serviceLocator.get('Translator');
 
 		return (<div className="panel">
