@@ -7,7 +7,7 @@
 *       ## #     # #     # #     #    #       #    # #     #  *
 *       ## #     # #     # #     #   #       #     # ######   * @Last Modified by:   revers
 *  ####### #     # #     # #     #  #       #      # #        *
-*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-11-06 16:16:46
+*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-11-06 20:05:49
 **************************************************************/
 
 class PanelFilterTemplateMainView extends PanelFilterTemplateAbstractView {
@@ -34,12 +34,11 @@ class PanelFilterTemplateMainView extends PanelFilterTemplateAbstractView {
 		} else {
 			title = this.state['title'];
 		}
-
 		return (<div className="panel">
 			<div className="title_panel" data-url={this.state.link} onClick={this.disableAll.bind(this)}>
 				{this.getPreviousTitlePanel(this.state['title'])}
 				<span className="title">{title}</span>
-				{!(current && current.getParent() instanceof MasterRoute) ? <i className="fa fa-chevron-left back"></i> : null }
+				{ current && !(current.getParent() instanceof MasterRoute) ? <i className="fa fa-chevron-left back"></i> : null }
 			</div>
 			<ul>
 				{this.state['content'].map(function (elem, key) {
