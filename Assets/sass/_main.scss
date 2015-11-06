@@ -7,7 +7,7 @@
 *       ## #     # #     # #     #    #       #    # #     #  *
 *       ## #     # #     # #     #   #       #     # ######   * @Last Modified by:   revers
 *  ####### #     # #     # #     #  #       #      # #        *
-*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-11-03 17:10:06
+*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-11-06 16:22:25
 **************************************************************/
 
 div.panel {
@@ -25,14 +25,46 @@ div.panel {
 		font-size : 20px;
 		height: 42px;
 
-		i {
+		div.previousTitlePanel {
+			display : inline-block;
+			width: 30px;
+			height: 30px;
+			margin-left: 15px;
+
+			div.miniature, i.fa {
+				width: 100%;
+				height: 100%;
+				margin-top : 4px;
+				font-size: 30px;
+				color : rgba($white_color, 0.5);
+			}
+
+			div.miniature {
+				border: 1px solid lighten($primary_color, 5);
+			}
+		}
+
+		span.title {
+			vertical-align: top;
+			margin-left : 15px;
+			width: 180px;
+			display: inline-block;
+			vertical-align: top;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+
+		i.back {
 			line-height: 40px;
 			color : rgba($white_color, 0.5);
-			float : right;
-			margin-right: 15px;
+			float : left;
+			margin-left: -10px;
 			text-shadow: none;
+		}
 
-			&:hover {
+		&:hover {
+			i {
 				color : rgba($white_color, 0.8);
 				cursor: pointer;
 			}
