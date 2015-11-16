@@ -7,7 +7,7 @@
 #       ## #     # #     # #     #    #       #    # #     #  #
 #       ## #     # #     # #     #   #       #     # ######   # @Last Modified by:   revers
 #  ####### #     # #     # #     #  #       #      # #        #
-#  ######   #####   ######  #####  ####### ####### # #######  # @Last Modified time: 2015-11-06 12:37:57
+#  ######   #####   ######  #####  ####### ####### # #######  # @Last Modified time: 2015-11-08 20:03:20
 ###############################################################
 
 main:
@@ -31,6 +31,7 @@ main:
 		challengelink: Liens de défis
 		eligibility: Éligibilitées
 		institute: Établissements
+		baseuser: Utilisateurs
 
 		delete: Supprimer
 		update : Éditer
