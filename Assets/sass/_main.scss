@@ -7,7 +7,7 @@
 *       ## #     # #     # #     #    #       #    # #     #  *
 *       ## #     # #     # #     #   #       #     # ######   * @Last Modified by:   revers
 *  ####### #     # #     # #     #  #       #      # #        *
-*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-11-07 02:56:15
+*  ######   #####   ######  #####  ####### ####### # #######  * @Last Modified time: 2015-11-16 12:03:14
 **************************************************************/
 
 div.panel {
@@ -19,7 +19,6 @@ div.panel {
 		padding-left : 20px;
 		background-color: darken($secondary_color, 5);
 		cursor: pointer;
-		font-style: italic;
 		color : $white_color;
 		border-top : 1px solid darken($secondary_color, 3);
 		font-size : 20px;
